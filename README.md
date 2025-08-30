@@ -1,14 +1,14 @@
 # An example of Chez Scheme optimization
 
 ## Intro 
-A while ago I decided to write a simple program to see how fast I could really make it in Chez Scheme. At the time I first started it, I was mainly interested in how memory layout would affect performance Chez. As time went on however I learned a few more things that I thought would be useful to write about.
+A while ago I decided to write a simple program to see how fast I could really make it in Chez Scheme. At the time I first started it, I was mainly interested in how memory layout would affect performance in Chez. As time went on however I learned a few more things that I thought would be useful to write about.
 
 In the process I wrote a simple "struct" macro that https://github.com/allenj12/struct that helps index proper data that you need over a bytevector. If you are familiar with the ftype interface in Chez, its similar except data is still managed by the garbage collector instead of being on the C heap. 
 
 ## The program.
 The program is simple, it simulates a bunch of circles bounceing around on a screen. I did have a version that actually rendered the circles using SDL, but rendering became a bottleneck and made viewing performance difficult.
 
-When a circle passes the edge of the "screen" it reverses the velocity for the respective access, and places the circle at the border. While it does this, it calculates how many times it processed the whole 500,000 circles in the last second, every second. 
+When a circle passes the edge of the "screen" it reverses the velocity for the respective axis, and places the circle at the border. While it does this, it calculates how many times it processed the whole 500,000 circles in the last second, every second. 
 
 The prorgam has this shape
 
